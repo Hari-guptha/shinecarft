@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 export function Model(props) {
-  const { nodes, materials } = useGLTF('public/shine1.glb')
+  const { nodes, materials } = useGLTF('./public/shine.glb')
   Object.keys(materials).forEach(key => {
     materials[key].wireframe = props.wireframe;
   });
@@ -28,4 +28,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('public/shine1.glb')
+useGLTF.preload('./public/shine.glb')
