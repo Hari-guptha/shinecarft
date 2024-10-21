@@ -8,7 +8,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export function Model(props) {
   const group = React.useRef()
-  const { nodes, materials, animations } = useGLTF('public/car.glb')
+  const { nodes, materials, animations } = useGLTF('car.glb')
   const { actions, mixer  } = useAnimations(animations, group)
   Object.keys(materials).forEach(key => {
     materials[key].wireframe = props.wireframe;
@@ -188,4 +188,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('public/car.glb')
+useGLTF.preload('car.glb')
