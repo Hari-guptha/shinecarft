@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { Canvas } from '@react-three/fiber';
-import { Model } from './component/Model';
+import { Model } from './component/car';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { GUI } from 'dat.gui';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
 function App() {
   const [wireframe, setWireframe] = useState(false);
-  const [bloomIntensity, setBloomIntensity] = useState(1.5);
+  const [bloomIntensity, setBloomIntensity] = useState(0.5);
   const [autoRotate, setAutoRotate] = useState(true);
   const guiRef = useRef(null);
   useEffect(() => {
@@ -43,13 +43,14 @@ function App() {
       <Canvas dpr={Math.min(window.devicePixelRatio, 2)}
         style={{ width: window.innerWidth, height: window.innerHeight }}
         shadows
-        camera={{ position: [1, 1, 12], fov: 40 }}>
+        camera={{ position: [1, 1, 12], fov: 30 }}>
         <Environment preset="dawn" environmentIntensity={1} />
         <ambientLight color={"white"} intensity={0.8} />
         <directionalLight position={[10, 10, 10]} intensity={1} />
         <OrbitControls enablePan={true} autoRotate={autoRotate} autoRotateSpeed={1}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2.1} />
+          // maxPolarAngle={Math.PI / 2}
+          // minPolarAngle={Math.PI / 2.1}
+           />
         <color attach="background" args={["black"]} />
         <Model wireframe={wireframe} />
         <EffectComposer>
